@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
+import 'colors.dart';
 
 class HomeScreen extends StatelessWidget {
-  final Color widgetsColor = const Color.fromARGB(240, 238, 175, 45);
-  final Color backgroundColor = Colors.black;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         title: Center(
           child: Text(
             'PÁGINA INICIAL',
-            style: TextStyle(color: backgroundColor),
+            style: TextStyle(color: AppColors.backgroundColor),
           ),
         ),
-        backgroundColor: widgetsColor,
+        backgroundColor: AppColors.widgetsColor,
       ),
       body: Center(
         child: Column(
@@ -30,10 +29,10 @@ class HomeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/screen1');
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: widgetsColor,
+                    backgroundColor: AppColors.widgetsColor,
                     elevation: 12.0,
                     textStyle: const TextStyle(color: Colors.white)),
-                child: const Text('TELA 1'),
+                child: const Text('LISTAGEM DE CADASTRO'),
               ),
             ),
             SizedBox(
@@ -44,10 +43,10 @@ class HomeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/screen2');
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: widgetsColor,
+                    backgroundColor: AppColors.widgetsColor,
                     elevation: 12.0,
                     textStyle: const TextStyle(color: Colors.white)),
-                child: const Text('TELA 2'),
+                child: const Text('EDITAR'),
               ),
             ),
           ],

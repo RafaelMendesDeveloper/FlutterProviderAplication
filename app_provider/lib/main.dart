@@ -3,6 +3,7 @@ import 'package:app_provider/screen2.dart';
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 
+
 const Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
 void main() {
