@@ -1,4 +1,7 @@
+import 'package:app_provider/screen1.dart';
+import 'package:app_provider/screen2.dart';
 import 'package:flutter/material.dart';
+import 'homeScreen.dart';
 
 const Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
@@ -61,26 +64,12 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: darkBlue,
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: MyWidget(),
-        ),
-      ),
-    );
-  }
-}
-
-class MyWidget extends StatefulWidget {
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Hello, World!',
-      style: Theme.of(context).textTheme.headlineMedium,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/screen1': (context) => Screen1(),
+        '/screen2': (context) => Screen2(),
+      },
     );
   }
 }
