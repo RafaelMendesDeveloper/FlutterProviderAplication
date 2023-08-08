@@ -2,12 +2,17 @@ import 'package:app_provider/screen1.dart';
 import 'package:app_provider/screen2.dart';
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
-
+import 'package:provider/provider.dart';
 
 const Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => EstadoListaDePessoas(),
+      child: MyApp(),
+    ),
+  );
 }
 
 enum TipoSanguineo {
@@ -21,6 +26,29 @@ enum TipoSanguineo {
   abNegativo,
 }
 
+extension TipoSanguineoExtension on TipoSanguineo {
+  String get displayValue {
+    switch (this) {
+      case TipoSanguineo.aPositivo:
+        return 'A+';
+      case TipoSanguineo.aNegativo:
+        return 'A-';
+      case TipoSanguineo.bPositivo:
+        return 'B+';
+      case TipoSanguineo.bNegativo:
+        return 'B-';
+      case TipoSanguineo.oPositivo:
+        return 'O+';
+      case TipoSanguineo.oNegativo:
+        return 'O-';
+      case TipoSanguineo.abPositivo:
+        return 'AB+';
+      case TipoSanguineo.abNegativo:
+        return 'AB-';
+    }
+  }
+}
+
 class Pessoa {
   const Pessoa({
     required this.nome,
@@ -28,6 +56,7 @@ class Pessoa {
     required this.telefone,
     required this.github,
     required this.tipoSanguineo,
+    required this.tipoSanguineoAtualizado,
   });
 
   final String nome;
@@ -35,7 +64,9 @@ class Pessoa {
   final String telefone;
   final String github;
   final TipoSanguineo tipoSanguineo;
+  final String tipoSanguineoAtualizado;
 
+  
   // todo: implementar equals e hashcode
 }
 
@@ -44,7 +75,7 @@ class EstadoListaDePessoas with ChangeNotifier {
 
   List<Pessoa> get pessoas => List.unmodifiable(_listaDePessoas);
 
-  void incluir(Pessoa pessoa) {
+  incluir(Pessoa pessoa) {
     _listaDePessoas.add(pessoa);
     notifyListeners();
   }
